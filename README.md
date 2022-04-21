@@ -1,6 +1,6 @@
 # pixionary
 
-A new Flutter project.
+## Pictionary with a catch
 
 ## Getting Started
 
