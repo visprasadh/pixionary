@@ -21,7 +21,7 @@ class _ArtBoardState extends State<ArtBoard> {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
     final double dimension =
-        (screenHeight > screenWidth) ? screenWidth * 0.7 : screenHeight * 0.7;
+        (screenHeight > screenWidth) ? screenWidth * 0.65 : screenHeight * 0.65;
     final double side = dimension / widget.size;
     final columnList = <Row>[];
     final rowList = <Tile>[];

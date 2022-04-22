@@ -13,6 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   bool enabled = false;
   Color color = Colors.purple;
+  double size = 5;
 
   void colorChange(Color c) {
     setState(() {
@@ -22,6 +23,10 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double dimension =
+        (screenHeight > screenWidth) ? screenWidth * 0.65 : screenHeight * 0.65;
     return Scaffold(
         body: Column(
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -36,13 +41,13 @@ class _HomePageState extends State<HomePage> {
         ),
         ArtBoard(
           color: color,
-          size: 5,
+          size: size.toInt(),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              margin: const EdgeInsets.all(10),
+              margin: const EdgeInsets.symmetric(vertical: 20),
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: Colors.grey.withOpacity(0.2),
@@ -79,30 +84,27 @@ class _HomePageState extends State<HomePage> {
                     onPress: () => colorChange(Colors.red),
                     color: Colors.red,
                   ),
-                  // GestureDetector(
-                  //   onTap: () => setState(() {
-                  //     color = Colors.orange;
-                  //   }),
-                  //   child: Container(
-                  //     height: 50,
-                  //     width: 50,
-                  //     color: Colors.orange,
-                  //   ),
-                  // ),
-                  // GestureDetector(
-                  //   onTap: () => setState(() {
-                  //     color = Colors.blue;
-                  //   }),
-                  //   child: Container(
-                  //     height: 30,
-                  //     width: 30,
-                  //     color: Colors.blue,
-                  //   ),
-                  // ),
                 ],
               ),
             ),
           ],
+        ),
+        Container(
+          width: dimension,
+          child: Slider(
+            min: 3,
+            max: 15,
+            activeColor: color,
+            inactiveColor: Colors.grey,
+            thumbColor: Colors.black,
+            value: size,
+            divisions: 12,
+            onChanged: (value) {
+              setState(() {
+                size = value;
+              });
+            },
+          ),
         ),
       ],
     ));
