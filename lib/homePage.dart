@@ -18,6 +18,7 @@ class _HomePageState extends State<HomePage> {
         body: Padding(
       padding: const EdgeInsets.all(10.0),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           const Text(
             'PIXIONARY',
@@ -31,25 +32,39 @@ class _HomePageState extends State<HomePage> {
             size: 5,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              GestureDetector(
-                onTap: () => setState(() {
-                  color = Colors.orange;
-                }),
-                child: Container(
-                  height: 50,
-                  width: 50,
-                  color: Colors.orange,
+              Container(
+                margin: const EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Colors.grey.withOpacity(0.2),
+                  borderRadius: BorderRadius.circular(10),
                 ),
-              ),
-              GestureDetector(
-                onTap: () => setState(() {
-                  color = Colors.blue;
-                }),
-                child: Container(
-                  height: 50,
-                  width: 50,
-                  color: Colors.blue,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () => setState(() {
+                        color = Colors.orange;
+                      }),
+                      child: Container(
+                        height: 50,
+                        width: 50,
+                        color: Colors.orange,
+                      ),
+                    ),
+                    GestureDetector(
+                      onTap: () => setState(() {
+                        color = Colors.blue;
+                      }),
+                      child: Container(
+                        height: 30,
+                        width: 30,
+                        color: Colors.blue,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
